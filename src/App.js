@@ -9,6 +9,10 @@ function App() {
   //---------------------------------------------------------------------------------
   const [columns, setColumns] = useState([])
 
+  const [dimension, setDynamicDimension] = useState([])
+  const [measure , setDynamicMeasure] = useState([])
+
+
   useEffect(() => {
     const getColumns = async () => {
       const columnsFromAPI = await fetchColumns()
@@ -35,32 +39,19 @@ function App() {
       },
       body: msgBody
     })
-    const data = await response.json()
-
-    var myObject = JSON.parse(data);
-    console.log(myObject)
+    let data = await response.json()
+    plotData(data[0].values,data[1].values)
+  //  plotData(data[0].values,data[1].values)
+  //  var myObject = JSON.parse(data);
+  //  console.log(myObject)
   }
+ 
   //---------------------------------------------------------------------------------
-  const plotData = (dimensionValues, measureValues) => {
-    return (
-      <Plot
-        data={[
-          {
-            x: ['n', 'm', 'k'],
-            y: [2.2, 6.2, 3.5],
-            type: 'scatter',
-            mode: 'lines+markers',
-            marker: { color: 'red' },
-          },
-          { type: 'scatter', x: ['n', 'm', 'k'], y: [2.2, 6.2, 3.5], },
-        ]}
-        layout={{ width: 520, height: 440, title: 'Plot' }}
-      />
-    );
-
-  }
-
-  //---------------------------------------------------------------------------------
+  const plotData = (dimension , measure) =>{
+    setDynamicDimension(dimension)
+    setDynamicMeasure(measure)
+  } 
+   //---------------------------------------------------------------------------------
   const toggleReminder = (name) => {
     console.log("Toggling " + name)
     // setColumns(columns.map((column) => column.name === name ? {...column.name ="toggled"}: column))
@@ -70,7 +61,19 @@ function App() {
     <div className="App">
       <SideBar columns={columns} />
       <MeasureDimensionForm getData={getDimensionMeasureData} />
-
+      <Plot
+                data={[
+                    {
+                        x: dimension,
+                        y: measure,
+                        type: 'scatter',
+                        mode: 'lines+markers',
+                        marker: { color: 'red' },
+                    }
+                    //,{ type: 'scatter', x: ['n', 'm', 'k'], y: [2.2, 6.2, 3.5], },
+                ]}
+                layout={{ width: 520, height: 440, title: 'Plot' }}
+            />
 
     </div>
   );
