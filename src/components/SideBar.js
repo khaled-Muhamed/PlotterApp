@@ -3,7 +3,7 @@ import Button from './Button'
 
 import Columns from './Columns'
 
-const SideBar = ({title , columns}) => {
+const SideBar = ({title , columns, onToggle}) => {
     const onClick = () =>{
         console.log('Cilck') 
      }
@@ -13,7 +13,7 @@ const SideBar = ({title , columns}) => {
             {/* <h1 style={sideBarStyle}> Hello {title} </h1> */}
             <h1 > Hello {title} </h1>
             <Button color='green' text='Hello' onClick={onClick}/>
-            <Columns columns={columns}/>
+            <Columns columns={columns} onToggle = {onToggle}/>
         </header>
     )
 }

@@ -1,10 +1,9 @@
-import React from 'react'
 
-const column = () => {
+const column = ({key ,column , onToggle}) => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <h3 onDoubleClick={onToggle(column.name)} >{column.name}</h3>
+        </>
     )
 }
 
