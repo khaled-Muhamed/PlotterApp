@@ -1,6 +1,6 @@
 import SideBar from "./components/SideBar";
 import { useState ,useEffect } from "react"
-
+import MeasureDimensionForm from "./components/MeasureDimensionForm"
 function App() {
 
   //load columns on page load
@@ -24,7 +24,7 @@ function App() {
   }
 //---------------------------------------------------------------------------------
 //post to get the dimension and measure columns data values.
-const getDimensionMeasureData = async(measure,dimension) =>{
+const getDimensionMeasureData = async (measure,dimension) =>{
   const msgBody = `{"measures": ["${measure}"],"dimension": "${dimension}"}`
   const response = await fetch('https://plotter-task.herokuapp.com/data',{
       method: 'POST',
@@ -46,7 +46,8 @@ const toggleReminder = (name) =>{
 
   return (
     <div className="App">
-     <SideBar title={1} columns={columns} onToggle={toggleReminder} getData = {getDimensionMeasureData}/>
+     <SideBar columns={columns}/>
+     <MeasureDimensionForm getData = {getDimensionMeasureData}/>
     </div>
   );
 }

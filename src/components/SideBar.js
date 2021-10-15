@@ -1,19 +1,16 @@
 import PropTypes from 'prop-types'
-import Button from './Button'
+
 
 import Columns from './Columns'
 
-const SideBar = ({title , columns, onToggle,getData}) => {
+const SideBar = ({columns, getData}) => {
     const onClick = () =>{
         console.log('Cilck') 
      }
 
     return (
         <header>
-            {/* <h1 style={sideBarStyle}> Hello {title} </h1> */}
-            <h1 > Hello {title} </h1>
-            <Button color='green' text='Hello' onClick={onClick} getData = {getData}/>
-            <Columns columns={columns} onToggle = {onToggle}/>
+            <Columns columns={columns}/>
         </header>
     )
 }

@@ -1,8 +1,9 @@
 const AddDimension = () => {
     return (
-        <textarea>
-            
-        </textarea >
+        <div>
+            <label>dimension</label>
+            <input></input>
+        </div>
     )
 }
 

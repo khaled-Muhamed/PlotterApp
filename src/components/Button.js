@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types'
 
-const Button = ({color,text,onClick,getData}) => {
-    // const onClick = () =>{
-    //     console.log("Clicked")
-    // }
+const Button = ({color,text,getData}) => {
+    const onClick = (e) => {
+        e.preventDefault()
+        getData('Cost','Product')
+    }
     return <button 
-    onClick={getData('Cost','Product')}
+    onClick = {onClick}
      style={{backgroundColor:color}} className='btn'>{text}</button>
 }
 
