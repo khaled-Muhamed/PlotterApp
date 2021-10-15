@@ -4,15 +4,15 @@ import MeasureDimensionForm from "./components/MeasureDimensionForm"
 import Plot from 'react-plotly.js';
 
 function App() {
-
-  //load columns on page load
-  //---------------------------------------------------------------------------------
   const [columns, setColumns] = useState([])
-
   const [dimension, setDynamicDimension] = useState([])
   const [measure , setDynamicMeasure] = useState([])
 
+  const [dimensionTitle, setDimensionTitle] = useState('')
+  const [measureTitle , setMeasureTitle] = useState('')
 
+  //load columns on page load
+  //---------------------------------------------------------------------------------
   useEffect(() => {
     const getColumns = async () => {
       const columnsFromAPI = await fetchColumns()
@@ -29,6 +29,7 @@ function App() {
     return data
   }
   //---------------------------------------------------------------------------------
+
   //post to get the dimension and measure columns data values.
   const getDimensionMeasureData = async (measure, dimension) => {
     const msgBody = `{"measures": ["${measure}"],"dimension": "${dimension}"}`
@@ -40,22 +41,21 @@ function App() {
       body: msgBody
     })
     let data = await response.json()
-    plotData(data[0].values,data[1].values)
-  //  plotData(data[0].values,data[1].values)
-  //  var myObject = JSON.parse(data);
-  //  console.log(myObject)
+    // plotData(data[0].values,data[1].values)
+    plotData(data)
   }
  
-  //---------------------------------------------------------------------------------
-  const plotData = (dimension , measure) =>{
-    setDynamicDimension(dimension)
-    setDynamicMeasure(measure)
-  } 
+  // const plotData = (dimension , measure) =>{
+    const plotData = (data) =>{
+    setDynamicDimension(data[0].values)
+    setDimensionTitle(data[0].name)
+
+    setDynamicMeasure(data[1].values)
+    setMeasureTitle(data[1].name)
+    
+
+  }  
    //---------------------------------------------------------------------------------
-  const toggleReminder = (name) => {
-    console.log("Toggling " + name)
-    // setColumns(columns.map((column) => column.name === name ? {...column.name ="toggled"}: column))
-  }
 
   return (
     <div className="App">
@@ -72,7 +72,25 @@ function App() {
                     }
                     //,{ type: 'scatter', x: ['n', 'm', 'k'], y: [2.2, 6.2, 3.5], },
                 ]}
-                layout={{ width: 520, height: 440, title: 'Plot' }}
+                layout={{ width: 700,
+                   height: 700,
+                    title: 'Plot',
+                    xaxis: {
+                      title: dimensionTitle,
+                      titlefont: {
+                          family: 'Courier New, monospace',
+                          size: 18,
+                          color: '#7f7f7f'
+                      }
+                   },yaxis: {
+                    title: measureTitle,
+                    titlefont: {
+                        family: 'Courier New, monospace',
+                        size: 18,
+                        color: '#7f7f7f'
+                     }
+                }
+               }}
             />
 
     </div>

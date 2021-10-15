@@ -2,7 +2,7 @@
 const column = ({key ,column }) => {
     return (
         <>
-            <h3>{column.name}</h3>
+            <h3 >{column.name} {'('+column.function+')'}</h3>
         </>
     )
 }

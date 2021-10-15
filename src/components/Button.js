@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 
 const Button = ({color,text,getData}) => {
+    
     const onClick = (e) => {
         e.preventDefault()
         getData('Cost','Product')

@@ -4,10 +4,6 @@ import PropTypes from 'prop-types'
 import Columns from './Columns'
 
 const SideBar = ({columns, getData}) => {
-    const onClick = () =>{
-        console.log('Cilck') 
-     }
-
     return (
         <header>
             <Columns columns={columns}/>
