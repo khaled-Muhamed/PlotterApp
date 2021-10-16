@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types'
-
-
 import Columns from './Columns'
 
-const SideBar = ({columns, getData}) => {
+const SideBar = ({columns}) => {
+
+    //Here I am going to allow dragging and dropping in side Bar
+    //---------------------------------------------------------
     return (
         <header>
             <Columns columns={columns}/>
@@ -19,8 +20,4 @@ SideBar.protoTypes = {
     title : PropTypes.string.isRequired,
 }
 
-// const sideBarStyle = {
-//     color:'red',
-//     backgroundColor: 'blue',
-// }
 export default SideBar
