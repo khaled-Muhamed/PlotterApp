@@ -11,25 +11,21 @@ const MeasureDimensionForm = (props) => {
         props.getData(props.inputMeas, props.inputDim)
 
     }
-
     return (
         <form>
             <div className='row'>
                 <label className='label' >Dimension</label>
                 <div id='dimInput' className='input'>
-                {props.inputDim}
-                
+                    {props.inputDim}
                 </div>
-                
-      
+
             </div>
             <div className='row'>
                 <label className='label'>Measure</label>
                 <div id='measInput' className='input'>
-                {props.inputMeas}
-                
+                    {props.inputMeas}
                 </div>
-          
+
             </div>
             <button className='button' onClick={onSubmit}>Generate Plot</button>
         </form>
