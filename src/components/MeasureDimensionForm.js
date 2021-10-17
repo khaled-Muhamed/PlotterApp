@@ -1,31 +1,37 @@
-import { useState } from "react"
+import './MeasureDimensionForm.css';
 
-
-const MeasureDimensionForm = ({ getData }) => {
-    const [inputDimension, setDimension] = useState('')
-    const [inputMeasure, setMeasure] = useState('')
+const MeasureDimensionForm = (props) => {
+    // const [inputDimension, setDimension] = useState('')
+    // const [inputMeasure, setMeasure] = useState('')
 
     const onSubmit = (e) => {
         e.preventDefault()
         //validate here the dimension and measure before calling the Api
         //if all is ok call the API and clear fields
-        getData(inputMeasure, inputDimension)
+        props.getData(props.inputMeas, props.inputDim)
 
     }
 
     return (
         <form>
-            <div>
-                <label>Dimension</label>
-                <input type="text" placeholder="Enter a Dimension"
-                    value={inputDimension} onChange={(e) => setDimension(e.target.value)}></input>
+            <div className='row'>
+                <label className='label' >Dimension</label>
+                <div id='dimInput' className='input'>
+                {props.inputDim}
+                
+                </div>
+                
+      
             </div>
-            <div>
-                <label>Measure</label>
-                <input type="text" placeholder="Enter a Measure"
-                    value={inputMeasure} onChange={(e) => setMeasure(e.target.value)}></input>
+            <div className='row'>
+                <label className='label'>Measure</label>
+                <div id='measInput' className='input'>
+                {props.inputMeas}
+                
+                </div>
+          
             </div>
-            <button onClick={onSubmit}>Generate Plot</button>
+            <button className='button' onClick={onSubmit}>Generate Plot</button>
         </form>
     )
 }

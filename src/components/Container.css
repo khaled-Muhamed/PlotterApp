@@ -1,0 +1,33 @@
+.row{
+    display:flex; flex-direction:row;
+}
+
+
+.droppable {
+    margin-left: 150px ;
+    margin-top: 100px;
+    position: left;
+    width: 500px;
+    height: 100px;
+    right: 0;
+    top: 10;
+  }
+  
+  .draggable {
+    width: 100px;
+    height: 30px;
+    border: 2px solid black;
+    background-color: rgb(140, 195, 226);
+    text-align: center;
+    font: inherit;
+    font-style: italic;
+    padding: 5px;
+    margin: 10px auto;
+  }
+  .side-bar{
+      border: 3px solid rgb(36, 36, 49);
+      width: 200px;
+      margin: 10px 10px 10px 10px;
+      height: auto;
+
+  }

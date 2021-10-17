@@ -7,6 +7,7 @@ const SideBar = ({columns}) => {
     //---------------------------------------------------------
     return (
         <header>
+            <div> Columns</div>
             <Columns columns={columns}/>
         </header>
     )
