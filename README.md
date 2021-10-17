@@ -14,7 +14,7 @@ Clients are able to specify:
   - reason: make the application more robust as it won't build the plot untill client click on button.
 
 ## Example
-check Sample Runs/Example snippets.
+check Sample Example snippets.
 
 ## Possible future improvements.
 * Handle more Exceptions from API
@@ -25,11 +25,13 @@ check Sample Runs/Example snippets.
 
 ## Important Files
 
- * src/CronJob/CronJob.java: This is a java class used for creating job instance and behaviour.
- * src/JobScheduler/CronJobScheduler: This is a java class to create the scheduler instance which is singleton and behaviour.
- * src/Logger/LoggerInstance: java class to log job actions which is singleton.
- * src/Parser/RunTimeValidator: java Interface to have the methods used to validate user input.
- * src/Parser/Parser: java class which is singleton to get user input parse and validate it.
+ * src/components/MeasureDimensionForm.js: form to allow client drag and drop iside.
+ * MeasureDimensionForm.css: style for MeasureDimensionForm.
+ * src/components/Container.js: container that contain columns sideBar and generating plot form.
+ * Container.css :style for Container.
+ * src/components/Columns.js: form for coulumns getched from API.
+ * src/components/ColumnForm.js: form for building plot.
+ * src/components/Column.js: component for each column.
  
 
 ## References 
